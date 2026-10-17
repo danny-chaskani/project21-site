@@ -1,0 +1,3 @@
+# GitHub Pages build: do not publish the Worker source or its setup notes.
+exclude:
+  - worker

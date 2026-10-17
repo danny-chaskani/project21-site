@@ -1,0 +1,5 @@
+# Local-only preview pages (style guide, tests)
+_dev/
+
+# Draft products: never published, the repo is public
+data/products.draft.json

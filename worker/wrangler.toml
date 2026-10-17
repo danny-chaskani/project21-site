@@ -1,0 +1,25 @@
+# Project21 quote endpoint: https://api.project21.net/quote
+# No secrets in this file (the repo is public). The destination address is
+# the secret QUOTE_TO_EMAIL, set with: npx wrangler secret put QUOTE_TO_EMAIL
+name = "p21-quote"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Own subdomain only. The apex and www records (GitHub Pages) are not touched.
+routes = [
+  { pattern = "api.project21.net", custom_domain = true }
+]
+
+[vars]
+ALLOWED_ORIGINS = "https://project21.net,https://www.project21.net"
+QUOTE_FROM = "quotes@project21.net"
+RATE_LIMIT_PER_HOUR = "5"
+
+# Sends only to verified destination addresses (free on every plan).
+[[send_email]]
+name = "EMAIL"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "p21-quotes"
+database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_create"

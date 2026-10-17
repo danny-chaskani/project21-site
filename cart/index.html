@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>הסל שלך | Project21</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="/assets/p21-favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/p21-favicon-180.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/p21-palette.css">
+  <link rel="stylesheet" href="/assets/css/p21.css">
+  <script type="module" src="/assets/js/header.js"></script>
+  <script type="module" src="/assets/js/cart-page.js"></script>
+  <script type="module" src="/assets/js/quote-form.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <a class="logo-link" href="/"><img class="logo" src="/assets/p21-horizontal-charcoal.svg" alt="Project21"></a>
+      <div data-cart-slot></div>
+    </header>
+  </div>
+  <hr class="rule">
+
+  <main class="container cart-page">
+    <div class="page-head">
+      <h1>הסל שלך</h1>
+    </div>
+
+    <p class="notice" id="notice" role="status" hidden></p>
+
+    <div id="empty" hidden>
+      <p>הסל עדיין ריק. אפשר להתחיל מהמסגרות.</p>
+      <a class="btn btn-secondary" href="/frames/">לכל המסגרות</a>
+    </div>
+
+    <div id="filled" hidden>
+      <ul class="cart-lines" id="lines"></ul>
+
+      <div class="cart-summary">
+        <p id="count"></p>
+        <p class="small text-secondary" id="estimate" hidden></p>
+        <button class="btn btn-primary" type="button" id="request" aria-controls="quote" aria-expanded="false">בקשת הצעת מחיר</button>
+      </div>
+    </div>
+
+    <!-- Quote request form: on the same page, under the cart. -->
+    <section id="quote" class="quote" aria-labelledby="quote-title" hidden>
+      <h2 id="quote-title">בקשת הצעת מחיר</h2>
+      <form id="quote-form" novalidate>
+        <div class="field">
+          <label for="q-name">שם מלא</label>
+          <input class="input" id="q-name" name="name" type="text" autocomplete="name" aria-describedby="q-name-err" required>
+          <p class="error" id="q-name-err" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="q-email">מייל</label>
+          <input class="input" id="q-email" name="email" type="email" inputmode="email" autocomplete="email" dir="ltr" aria-describedby="q-email-err" required>
+          <p class="error" id="q-email-err" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="q-phone">טלפון</label>
+          <input class="input" id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" aria-describedby="q-phone-err" required>
+          <p class="error" id="q-phone-err" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="q-notes">הערות</label>
+          <textarea class="textarea" id="q-notes" name="notes" maxlength="500"></textarea>
+        </div>
+
+        <!-- Honeypot: hidden from people, filled only by bots. -->
+        <div class="hp" aria-hidden="true">
+          <label for="q-company">Company</label>
+          <input id="q-company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label class="check">
+            <input type="checkbox" id="q-consent" name="consent" aria-describedby="q-consent-err" required>
+            <span>אני מסכים/ה שתיצרו איתי קשר לגבי הבקשה הזו. <a href="/privacy/">מדיניות פרטיות</a></span>
+          </label>
+          <p class="error" id="q-consent-err" hidden></p>
+        </div>
+
+        <button class="btn btn-primary" type="submit" id="q-submit">שליחת בקשה</button>
+        <div class="notice send-failed" id="q-failed" role="alert" hidden>
+          <p>הבקשה לא נשלחה. בדקו את החיבור ונסו שוב.</p>
+          <p>אפשר גם לכתוב לנו ל־<a class="ltr" href="mailto:info@project21.net">info@project21.net</a>.</p>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>מסגרת מתכת | Project21</title>
+  <meta name="description" content="">
+  <link rel="icon" type="image/svg+xml" href="/assets/p21-favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/p21-favicon-180.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/p21-palette.css">
+  <link rel="stylesheet" href="/assets/css/p21.css">
+  <script type="module" src="/assets/js/header.js"></script>
+  <script type="module" src="/assets/js/item.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <a class="logo-link" href="/"><img class="logo" src="/assets/p21-horizontal-charcoal.svg" alt="Project21"></a>
+      <div data-cart-slot></div>
+    </header>
+  </div>
+  <hr class="rule">
+
+  <main class="container product" id="product" hidden>
+    <div class="product-gallery" id="gallery"></div>
+
+    <div class="product-info">
+      <h1 class="product-title product-name" lang="en" dir="ltr" id="name"></h1>
+      <p class="sku" id="sku"></p>
+      <p class="price-line" id="price"></p>
+      <p class="product-desc" id="desc"></p>
+
+      <form id="add-form" novalidate>
+        <div class="field qty-field">
+          <label for="qty">כמות</label>
+          <select class="select" id="qty" name="qty"></select>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="gift" name="gift" aria-controls="gift-message-field" aria-expanded="false">
+          <span>לארוז כמתנה? נוסיף שרוול, רצועה וכרטיס עם הברכה שלך.</span>
+        </label>
+
+        <div class="field" id="gift-message-field" hidden>
+          <label for="gift-message">ברכה</label>
+          <textarea class="textarea" id="gift-message" name="giftMessage" maxlength="200" aria-describedby="gift-count"></textarea>
+          <p class="small text-secondary" id="gift-count"><span class="ltr" id="gift-count-n">0/200</span></p>
+        </div>
+
+        <button class="btn btn-primary add-btn" type="submit">הוספה לסל</button>
+        <p class="added-note" id="added" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="blocks" id="blocks"></div>
+    </div>
+  </main>
+</body>
+</html>
