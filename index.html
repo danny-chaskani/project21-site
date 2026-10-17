@@ -4,28 +4,96 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>project21</title>
+  <link rel="icon" type="image/svg+xml" href="assets/p21-favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@300;400&family=Jost:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/p21-palette.css">
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body { margin: 0; }
+
     body {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background: var(--p21-mist);
+      color: var(--p21-charcoal);
+      font-family: "IBM Plex Sans Hebrew", system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    a:hover { color: var(--p21-walnut); }
+
+    header, footer, main { padding-inline: clamp(24px, 6vw, 96px); }
+
+    header { padding-block: clamp(24px, 4vw, 48px); }
+
+    .logo { display: block; height: 36px; width: auto; }
+
+    main {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: #fff;
-      color: #111;
-      font-family: system-ui, sans-serif;
+      text-align: center;
+      padding-block: 48px;
     }
+
     h1 {
-      font-size: clamp(2.5rem, 12vw, 6rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
       margin: 0;
+      font-family: "Jost", system-ui, sans-serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      line-height: 1.15;
+      color: var(--p21-charcoal);
+    }
+
+    .sub {
+      margin: clamp(16px, 2.5vw, 28px) 0 0;
+      font-weight: 300;
+      font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+      line-height: 1.5;
+      color: var(--p21-charcoal);
+    }
+
+    .soon {
+      margin: clamp(24px, 4vw, 48px) 0 0;
+      font-size: 1rem;
+      color: var(--p21-graphite);
+    }
+
+    footer { padding-bottom: clamp(24px, 4vw, 40px); }
+
+    .rule {
+      border-top: 1px solid var(--p21-steel);
+      padding-top: 20px;
+      font-size: 0.9375rem;
+      color: var(--p21-graphite);
+    }
+
+    @media (max-width: 600px) {
+      .logo { height: 28px; }
     }
   </style>
 </head>
 <body>
-  <h1>project21</h1>
+  <header>
+    <img class="logo" src="assets/p21-horizontal-charcoal.svg" alt="project21">
+  </header>
+
+  <main>
+    <h1 lang="en" dir="ltr">Objects with an address.</h1>
+    <p class="sub">אביזרי מתכת לבית ולשולחן העבודה.</p>
+    <p class="soon">בקרוב.</p>
+  </main>
+
+  <footer>
+    <div class="rule">project21.net</div>
+  </footer>
 </body>
 </html>
