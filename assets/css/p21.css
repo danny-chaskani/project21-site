@@ -261,6 +261,10 @@ main:focus { outline: none; }
 .stage[data-mode="side"] .layer-3d { grid-area: 1 / 2; }
 @media (prefers-reduced-motion: reduce) { .layer { transition: none !important; } }
 
+/* Viewer captions sit over the model; give them the page tone behind them so
+   graphite text keeps its contrast whatever is rendered underneath. */
+.p21-3d__hint, .p21-3d__tag { background: var(--p21-mist); padding: 2px 8px; }
+
 /* Thumbnails: 3D, sketch, front, back */
 .thumbs { display: flex; gap: 8px; margin-top: 16px; overflow-x: auto; scrollbar-width: none; }
 .thumbs::-webkit-scrollbar { display: none; }
