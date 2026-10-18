@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Project21</title>
-  <link rel="icon" type="image/svg+xml" href="assets/p21-favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/p21-favicon-180.png">
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="preload" href="assets/fonts/Jost-Variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/p21-palette.css">
-  <link rel="stylesheet" href="assets/css/p21.css">
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/logo/p21-favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/logo/p21-favicon-180.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/assets/brand/fonts/Jost-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/brand/p21-tokens.css">
+  <link rel="stylesheet" href="/assets/css/p21.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
 
@@ -22,7 +22,7 @@
       grid-template-rows: auto 1fr auto;
       background: var(--p21-mist);
       color: var(--p21-charcoal);
-      font-family: "IBM Plex Sans Hebrew", system-ui, sans-serif;
+      font-family: var(--p21-font-he);
       font-weight: 400;
       line-height: 1.6;
     }
@@ -30,9 +30,10 @@
     a { color: inherit; }
     a:hover { color: var(--p21-walnut); }
 
-    header, footer, main { padding-inline: clamp(24px, 6vw, 96px); }
+    header, footer, main { padding-inline: var(--site-margin); }
 
-    header { padding-block: clamp(24px, 4vw, 48px); }
+    header { padding-block: 24px; }
+    @media (min-width: 768px) { header { padding-block: 48px; } }
 
     .logo { display: block; height: 36px; width: auto; }
 
@@ -47,7 +48,7 @@
 
     h1 {
       margin: 0;
-      font-family: "Jost", system-ui, sans-serif;
+      font-family: var(--p21-font-lat);
       font-weight: 300;
       font-size: clamp(2.5rem, 8vw, 5.5rem);
       line-height: 1.15;
@@ -64,11 +65,11 @@
 
     .home-cta { margin-top: clamp(24px, 4vw, 40px); }
 
-    footer { padding-bottom: clamp(24px, 4vw, 40px); }
+    footer { padding-bottom: 32px; }
 
     .rule {
-      border-top: 1px solid var(--p21-steel);
-      padding-top: 20px;
+      border-top: 1px solid var(--p21-silver);
+      padding-top: 24px;
       font-size: 0.9375rem;
       color: var(--p21-graphite);
     }
@@ -81,7 +82,7 @@
 <body>
   <a class="skip-link" href="#main">דילוג לתוכן</a>
   <header>
-    <img class="logo" src="assets/p21-horizontal-charcoal.svg" alt="Project21">
+    <img class="logo" src="/assets/brand/logo/p21-horizontal-charcoal.svg" alt="Project21">
   </header>
 
   <main id="main" tabindex="-1">

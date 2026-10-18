@@ -1,0 +1,15 @@
+/* Project21 brand tokens – source: Project21 Brand Book 1.0 */
+@font-face{font-family:'Plex Hebrew';src:url(/assets/brand/fonts/IBMPlexSansHebrew-Light.ttf) format('truetype');font-weight:300;font-display:swap}
+@font-face{font-family:'Plex Hebrew';src:url(/assets/brand/fonts/IBMPlexSansHebrew-Regular.ttf) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Plex Hebrew';src:url(/assets/brand/fonts/IBMPlexSansHebrew-Medium.ttf) format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Jost';src:url('/assets/brand/fonts/Jost[wght].ttf') format('truetype');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Plex Mono';src:url(/assets/brand/fonts/IBMPlexMono-Regular.ttf) format('truetype');font-weight:400;font-display:swap}
+:root{
+  --p21-charcoal:#1F2124; --p21-graphite:#3A3D41; --p21-steel:#8B8F93; --p21-silver:#C7CACC;
+  --p21-mist:#EEEFEC; --p21-paper:#F8F8F6; --p21-stone:#D9D5CE; --p21-walnut:#6E5543;
+  --p21-font-he:'Plex Hebrew','Arial Hebrew',Arial,sans-serif;
+  --p21-font-lat:'Jost','Helvetica Neue',Arial,sans-serif;
+  --p21-font-mono:'Plex Mono','Courier New',monospace;
+  --p21-radius-ui:2px; --p21-control-h:48px;
+  --p21-max:1280px; --p21-gutter:24px; --p21-margin:clamp(20px,8vw,96px);
+}

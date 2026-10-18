@@ -1,0 +1,37 @@
+[
+  {
+    "id": "frames",
+    "code": "FR",
+    "name": "מסגרות",
+    "intro": "קו מתכת אחד סביב התמונה. חמש פריסות, שפה אחת.",
+    "order": 1
+  },
+  {
+    "id": "desk",
+    "code": "DS",
+    "name": "שולחן העבודה",
+    "intro": "",
+    "order": 2
+  },
+  {
+    "id": "storage",
+    "code": "SG",
+    "name": "אחסון",
+    "intro": "",
+    "order": 3
+  },
+  {
+    "id": "organizers",
+    "code": "OR",
+    "name": "ארגוניות",
+    "intro": "",
+    "order": 4
+  },
+  {
+    "id": "decor",
+    "code": "DC",
+    "name": "נוי",
+    "intro": "",
+    "order": 5
+  }
+]

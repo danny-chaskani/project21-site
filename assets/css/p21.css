@@ -1,45 +1,27 @@
-/* Project21 — shared design layer (stage 1)
-   Colors come from ../p21-palette.css; load it before this file. */
+/* Project21 — shared design layer.
+   Colors, font families and grid values come from /assets/brand/p21-tokens.css
+   (the single source); load it before this file. */
 
-/* ---------- Fonts (local, SIL OFL 1.1, see ../fonts/OFL-*.txt) ---------- */
-@font-face {
-  font-family: "IBM Plex Sans Hebrew";
-  src: url("../fonts/IBMPlexSansHebrew-Light.woff2") format("woff2");
-  font-weight: 300; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "IBM Plex Sans Hebrew";
-  src: url("../fonts/IBMPlexSansHebrew-Regular.woff2") format("woff2");
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "IBM Plex Sans Hebrew";
-  src: url("../fonts/IBMPlexSansHebrew-Medium.woff2") format("woff2");
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Jost";
-  src: url("../fonts/Jost-Variable.woff2") format("woff2");
-  font-weight: 300 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "IBM Plex Mono";
-  src: url("../fonts/IBMPlexMono-Regular.woff2") format("woff2");
-  font-weight: 400; font-style: normal; font-display: swap;
-}
+/* ---------- Fonts ----------
+   p21-tokens.css declares the families as TTF. The same families are declared
+   again here with the converted WOFF2 files (SIL OFL 1.1, licences next to the
+   fonts). The later rule wins, so only the WOFF2 files are downloaded. */
+@font-face { font-family: 'Plex Hebrew'; src: url(/assets/brand/fonts/IBMPlexSansHebrew-Light.woff2) format('woff2'); font-weight: 300; font-display: swap; }
+@font-face { font-family: 'Plex Hebrew'; src: url(/assets/brand/fonts/IBMPlexSansHebrew-Regular.woff2) format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Plex Hebrew'; src: url(/assets/brand/fonts/IBMPlexSansHebrew-Medium.woff2) format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Jost'; src: url(/assets/brand/fonts/Jost-Variable.woff2) format('woff2'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: 'Plex Mono'; src: url(/assets/brand/fonts/IBMPlexMono-Regular.woff2) format('woff2'); font-weight: 400; font-display: swap; }
+/* The 3D viewer's CSS asks for these names first; point them at the same files. */
+@font-face { font-family: 'IBM Plex Sans Hebrew'; src: url(/assets/brand/fonts/IBMPlexSansHebrew-Medium.woff2) format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'IBM Plex Sans Hebrew'; src: url(/assets/brand/fonts/IBMPlexSansHebrew-Regular.woff2) format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'IBM Plex Mono'; src: url(/assets/brand/fonts/IBMPlexMono-Regular.woff2) format('woff2'); font-weight: 400; font-display: swap; }
 
 :root {
-  --font-he: "IBM Plex Sans Hebrew", system-ui, sans-serif;
-  --font-en: "Jost", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --gutter: 16px;
-  --radius-ui: 2px;
-  --control-h: 48px;
   --tap: 44px;
-  --page-max: 1280px;
+  /* Side margin: 20px on mobile, the brand token from tablet up */
+  --site-margin: 20px;
 }
-@media (min-width: 768px) { :root { --gutter: 32px; } }
-@media (min-width: 1200px) { :root { --gutter: 64px; } }
+@media (min-width: 768px) { :root { --site-margin: var(--p21-margin); } }
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -48,7 +30,7 @@ body {
   margin: 0;
   background: var(--p21-mist);
   color: var(--p21-charcoal);
-  font-family: var(--font-he);
+  font-family: var(--p21-font-he);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
@@ -66,12 +48,12 @@ p { margin: 0 0 1em; }
 .prose, p { max-width: 75ch; }
 
 /* English: product names and full English headings only */
-.en, [lang="en"] { font-family: var(--font-en); font-weight: 300; }
-.product-name { font-family: var(--font-en); font-weight: 300; line-height: 1.2; }
+.en, [lang="en"] { font-family: var(--p21-font-lat); font-weight: 300; }
+.product-name { font-family: var(--p21-font-lat); font-weight: 300; line-height: 1.2; }
 
 /* SKUs and specs */
-.mono { font-family: var(--font-mono); font-weight: 400; }
-.sku { font-family: var(--font-mono); font-size: 14px; color: var(--p21-graphite); }
+.mono { font-family: var(--p21-font-mono); font-weight: 400; }
+.sku { font-family: var(--p21-font-mono); font-size: 14px; color: var(--p21-graphite); }
 
 /* Isolated LTR runs inside RTL text: SKUs, sizes, request IDs, email, phone */
 .ltr, .sku { direction: ltr; unicode-bidi: isolate; }
@@ -95,7 +77,7 @@ main:focus { outline: none; }
   position: absolute; top: 8px; right: 8px; z-index: 10;
   padding: 10px 16px; min-height: var(--tap);
   background: var(--p21-charcoal); color: var(--p21-mist); text-decoration: none;
-  font-family: var(--font-he); font-weight: 500; font-size: 15px;
+  font-family: var(--p21-font-he); font-weight: 500; font-size: 15px;
   transform: translateY(-200%);
 }
 .skip-link:focus { transform: none; color: var(--p21-mist); }
@@ -105,13 +87,17 @@ main:focus { outline: none; }
 }
 
 /* ---------- Layout ---------- */
-.container { width: 100%; max-width: var(--page-max); margin-inline: auto; padding-inline: var(--gutter); }
+.container { width: 100%; max-width: calc(var(--p21-max) + 2 * var(--site-margin)); margin-inline: auto; padding-inline: var(--site-margin); }
+
+/* 12-column grid (gutter from the tokens); one column on mobile */
+.grid-12 { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: var(--p21-gutter); }
+@media (min-width: 1024px) { .grid-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); } }
 
 .site-header {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding-block: 20px;
+  padding-block: 24px;
 }
-@media (min-width: 768px) { .site-header { padding-block: 28px; } }
+@media (min-width: 768px) { .site-header { padding-block: 32px; } }
 
 /* Horizontal logo: symbol height 26–30px mobile, 32–40px desktop.
    The SVG's symbol fills its full height, so height = symbol height.
@@ -126,9 +112,9 @@ main:focus { outline: none; }
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  min-height: var(--control-h); padding: 0 24px;
-  font-family: var(--font-he); font-weight: 500; font-size: 15px; line-height: 1.2;
-  border: 1px solid var(--p21-charcoal); border-radius: var(--radius-ui);
+  min-height: var(--p21-control-h); padding: 0 24px;
+  font-family: var(--p21-font-he); font-weight: 500; font-size: 15px; line-height: 1.2;
+  border: 1px solid var(--p21-charcoal); border-radius: var(--p21-radius-ui);
   text-decoration: none; cursor: pointer;
 }
 /* One primary button per screen */
@@ -140,15 +126,15 @@ main:focus { outline: none; }
 .btn:disabled, .btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; }
 
 /* ---------- Form fields ---------- */
-.field { display: grid; gap: 6px; margin-bottom: 20px; max-width: 480px; }
+.field { display: grid; gap: 8px; margin-bottom: 24px; max-width: 480px; }
 .field > label { font-weight: 400; font-size: 15px; color: var(--p21-charcoal); }
 
 .input, .textarea, .select {
-  width: 100%; min-height: var(--control-h); padding: 10px 12px;
+  width: 100%; min-height: var(--p21-control-h); padding: 10px 12px;
   font: inherit; font-size: 16px; /* ≥16px avoids iOS zoom */
   color: var(--p21-charcoal);
   background: var(--p21-paper);
-  border: 1px solid var(--p21-silver); border-radius: var(--radius-ui);
+  border: 1px solid var(--p21-silver); border-radius: var(--p21-radius-ui);
   appearance: none;
 }
 .textarea { min-height: 120px; resize: vertical; }
@@ -180,7 +166,7 @@ main:focus { outline: none; }
 
 /* Filter row: one line, scrolls inside itself on narrow screens */
 .filters {
-  display: flex; gap: 8px; margin: 0 calc(var(--gutter) * -1) 24px; padding: 4px var(--gutter);
+  display: flex; gap: 8px; margin: 0 calc(var(--site-margin) * -1) 24px; padding: 4px var(--site-margin);
   overflow-x: auto; scrollbar-width: none; list-style: none;
 }
 .filters[hidden] { display: none; }
@@ -189,7 +175,7 @@ main:focus { outline: none; }
 .chip {
   min-height: var(--tap); padding: 0 16px;
   font: inherit; font-size: 15px; color: var(--p21-charcoal);
-  background: transparent; border: 1px solid var(--p21-silver); border-radius: var(--radius-ui);
+  background: transparent; border: 1px solid var(--p21-silver); border-radius: var(--p21-radius-ui);
   cursor: pointer; white-space: nowrap;
 }
 .chip:hover { border-color: var(--p21-charcoal); }
@@ -215,7 +201,7 @@ main:focus { outline: none; }
 .cart-count {
   position: absolute; top: 4px; left: -6px;
   min-width: 18px; height: 18px; padding: 0 4px;
-  font-family: var(--font-mono); font-size: 11px; line-height: 18px; text-align: center;
+  font-family: var(--p21-font-mono); font-size: 11px; line-height: 18px; text-align: center;
   background: var(--p21-charcoal); color: var(--p21-mist);
 }
 .cart-count[hidden] { display: none; }
@@ -248,25 +234,25 @@ main:focus { outline: none; }
 @media (min-width: 900px) { .add-btn { width: auto; min-width: 240px; } }
 .added-note { min-height: 1.6em; margin: 12px 0 0; font-size: 15px; }
 
-.info-block { padding-block: 20px; border-bottom: 1px solid var(--p21-silver); }
+.info-block { padding-block: 24px; border-bottom: 1px solid var(--p21-silver); }
 .info-title { font-weight: 500; font-size: 17px; line-height: 1.35; margin: 0 0 10px; }
 .info-block p { margin: 0; }
 .plain-list { margin: 0; padding: 0; list-style: none; }
 
-.spec { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 14px; }
+.spec { width: 100%; border-collapse: collapse; font-family: var(--p21-font-mono); font-size: 14px; }
 .spec th, .spec td { padding: 8px 0; border-bottom: 1px solid var(--p21-silver); text-align: right; vertical-align: top; }
-.spec th { font-family: var(--font-he); font-weight: 400; color: var(--p21-graphite); width: 45%; padding-inline-end: 12px; }
+.spec th { font-family: var(--p21-font-he); font-weight: 400; color: var(--p21-graphite); width: 45%; padding-inline-end: 12px; }
 .spec tr:last-child th, .spec tr:last-child td { border-bottom: 0; }
 
 /* ---------- Cart page ---------- */
 .cart-page { padding-bottom: 64px; }
-.notice { padding: 12px 16px; margin: 0 0 24px; background: var(--p21-paper); border: 1px solid var(--p21-silver); color: var(--p21-graphite); }
+.notice { padding: 16px; margin: 0 0 24px; background: var(--p21-paper); border: 1px solid var(--p21-silver); color: var(--p21-graphite); }
 #empty .btn { margin-top: 8px; }
 .cart-migrated .notice { margin: 16px 0 0; }
 
 .cart-lines { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--p21-silver); }
 .cart-line {
-  display: grid; gap: 12px 16px; padding-block: 20px; border-bottom: 1px solid var(--p21-silver);
+  display: grid; gap: 16px; padding-block: 24px; border-bottom: 1px solid var(--p21-silver);
   grid-template-columns: 88px minmax(0, 1fr);
   grid-template-areas: "thumb info" "controls controls" "gift gift";
 }
@@ -310,11 +296,11 @@ main:focus { outline: none; }
 .text-page { padding-block: 24px 64px; }
 .text-page h2 { margin-top: 32px; }
 .thanks-items { list-style: none; margin: 0 0 24px; padding: 0; border-top: 1px solid var(--p21-silver); }
-.thanks-items li { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; padding-block: 10px; border-bottom: 1px solid var(--p21-silver); }
+.thanks-items li { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; padding-block: 8px; border-bottom: 1px solid var(--p21-silver); }
 .thanks-items .product-name { font-size: 18px; }
 
 /* ---------- Lines and surfaces ---------- */
-.rule { border: 0; border-top: 1px solid var(--p21-steel); margin: 0; }
+.rule { border: 0; border-top: 1px solid var(--p21-silver); margin: 0; }
 .surface { background: var(--p21-paper); border: 1px solid var(--p21-silver); }
 
 .visually-hidden {

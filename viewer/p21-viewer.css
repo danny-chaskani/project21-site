@@ -1,0 +1,14 @@
+/* Project21 – 3D product viewer. Uses the brand tokens (--p21-*) from the site. */
+.p21-3d{position:relative;width:100%;aspect-ratio:4/5;background:var(--p21-mist,#EEEFEC);overflow:hidden}
+.p21-3d model-viewer{width:100%;height:100%;background:transparent;--poster-color:transparent;--progress-bar-color:var(--p21-charcoal,#1F2124);--progress-bar-height:2px}
+.p21-3d .p21-3d__fallback{display:none;width:100%;height:100%;object-fit:cover}
+.p21-3d.is-fallback model-viewer{display:none}
+.p21-3d.is-fallback .p21-3d__fallback{display:block}
+.p21-3d__bar{position:absolute;inset-inline:12px;bottom:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;direction:rtl}
+.p21-3d__btn{font:500 14px/1 'IBM Plex Sans Hebrew','Plex Hebrew',Arial,sans-serif;min-height:44px;padding:0 14px;border:1px solid var(--p21-charcoal,#1F2124);border-radius:2px;background:var(--p21-paper,#F8F8F6);color:var(--p21-charcoal,#1F2124);cursor:pointer}
+.p21-3d__btn[aria-pressed="true"]{background:var(--p21-charcoal,#1F2124);color:var(--p21-mist,#EEEFEC)}
+.p21-3d__btn:focus-visible{outline:2px solid var(--p21-charcoal,#1F2124);outline-offset:2px}
+.p21-3d__btn--ar{margin-inline-start:auto;background:var(--p21-charcoal,#1F2124);color:var(--p21-mist,#EEEFEC)}
+.p21-3d__hint{position:absolute;top:14px;right:16px;font:400 13px/1.4 'IBM Plex Sans Hebrew','Plex Hebrew',Arial,sans-serif;color:var(--p21-graphite,#3A3D41);transition:opacity .4s;pointer-events:none}
+.p21-3d.is-touched .p21-3d__hint{opacity:0}
+.p21-3d__tag{position:absolute;top:16px;left:16px;font:400 11px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:var(--p21-graphite,#3A3D41);direction:ltr}

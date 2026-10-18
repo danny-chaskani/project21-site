@@ -1,0 +1,362 @@
+[
+  {
+    "id": "lintel-10x15",
+    "slug": "lintel-10x15",
+    "name": "Lintel 10×15",
+    "sku": "P21-FR-LIN-1015-ST-BR-01",
+    "category": "frames",
+    "series": "Lintel",
+    "layout": "standard",
+    "layout_he": "רגיל",
+    "panel_mm": [
+      180,
+      240
+    ],
+    "window_mm": [
+      92,
+      142
+    ],
+    "print_cm": "10 × 15",
+    "depth_mm": 15,
+    "desc": "מסגרת לתמונה בגודל 10 על 15 ס\"מ. קו מתכת אחד סביב התמונה, ושוליים רחבים שנותנים לה מקום.",
+    "status": "live",
+    "sort": 1,
+    "price": null,
+    "material": null,
+    "finish": null,
+    "hanging": null,
+    "assets": {
+      "sketch": "/assets/products/lintel-10x15/sketch.png",
+      "model": "/assets/products/lintel-10x15/model.glb",
+      "poster": "/assets/products/lintel-10x15/poster.webp",
+      "renders": [
+        "/assets/products/lintel-10x15/render-front.png",
+        "/assets/products/lintel-10x15/render-back.png"
+      ]
+    }
+  },
+  {
+    "id": "lintel-13x18",
+    "slug": "lintel-13x18",
+    "name": "Lintel 13×18",
+    "sku": "P21-FR-LIN-1318-ST-BR-01",
+    "category": "frames",
+    "series": "Lintel",
+    "layout": "standard",
+    "layout_he": "רגיל",
+    "panel_mm": [
+      220,
+      280
+    ],
+    "window_mm": [
+      122,
+      172
+    ],
+    "print_cm": "13 × 18",
+    "depth_mm": 15,
+    "desc": "מסגרת לתמונה בגודל 13 על 18 ס\"מ. קו מתכת אחד מקיף את התמונה ומשאיר לה את כל הבמה.",
+    "status": "live",
+    "sort": 2,
+    "price": null,
+    "material": null,
+    "finish": null,
+    "hanging": null,
+    "assets": {
+      "sketch": "/assets/products/lintel-13x18/sketch.png",
+      "model": "/assets/products/lintel-13x18/model.glb",
+      "poster": "/assets/products/lintel-13x18/poster.webp",
+      "renders": [
+        "/assets/products/lintel-13x18/render-front.png",
+        "/assets/products/lintel-13x18/render-back.png"
+      ]
+    }
+  },
+  {
+    "id": "lintel-15x21",
+    "slug": "lintel-15x21",
+    "name": "Lintel 15×21",
+    "sku": "P21-FR-LIN-1521-ST-BR-01",
+    "category": "frames",
+    "series": "Lintel",
+    "layout": "standard",
+    "layout_he": "רגיל",
+    "panel_mm": [
+      250,
+      320
+    ],
+    "window_mm": [
+      142,
+      202
+    ],
+    "print_cm": "15 × 21",
+    "depth_mm": 15,
+    "desc": "מסגרת לתמונה בגודל 15 על 21 ס\"מ. פרופורציות שקטות, שוליים שווים, ותחתית מעט רחבה יותר.",
+    "status": "live",
+    "sort": 3,
+    "price": null,
+    "material": null,
+    "finish": null,
+    "hanging": null,
+    "assets": {
+      "sketch": "/assets/products/lintel-15x21/sketch.png",
+      "model": "/assets/products/lintel-15x21/model.glb",
+      "poster": "/assets/products/lintel-15x21/poster.webp",
+      "renders": [
+        "/assets/products/lintel-15x21/render-front.png",
+        "/assets/products/lintel-15x21/render-back.png"
+      ]
+    }
+  },
+  {
+    "id": "lintel-21x30",
+    "slug": "lintel-21x30",
+    "name": "Lintel 21×30",
+    "sku": "P21-FR-LIN-2130-ST-BR-01",
+    "category": "frames",
+    "series": "Lintel",
+    "layout": "standard",
+    "layout_he": "רגיל",
+    "panel_mm": [
+      330,
+      430
+    ],
+    "window_mm": [
+      202,
+      292
+    ],
+    "print_cm": "21 × 30",
+    "depth_mm": 15,
+    "desc": "מסגרת לתמונה בגודל 21 על 30 ס\"מ. המידה הגדולה בסדרה, לקיר או למדף רחב.",
+    "status": "live",
+    "sort": 4,
+    "price": null,
+    "material": null,
+    "finish": null,
+    "hanging": null,
+    "assets": {
+      "sketch": "/assets/products/lintel-21x30/sketch.png",
+      "model": "/assets/products/lintel-21x30/model.glb",
+      "poster": "/assets/products/lintel-21x30/poster.webp",
+      "renders": [
+        "/assets/products/lintel-21x30/render-front.png",
+        "/assets/products/lintel-21x30/render-back.png"
+      ]
+    }
+  },
+  {
+    "id": "lintel-strip-5x15",
+    "slug": "lintel-strip-5x15",
+    "name": "Lintel Strip 5×15",
+    "sku": "P21-FR-LIN-0515-SP-BR-01",
+    "category": "frames",
+    "series": "Lintel",
+    "layout": "strip",
+    "layout_he": "רצועה",
+    "panel_mm": [
+      100,
+      210
+    ],
+    "window_mm": [
+      42,
+      142
+    ],
+    "print_cm": "5 × 15",
+    "depth_mm": 15,
+    "desc": "מסגרת לרצועת תמונות ממכונת צילום. החלון הצר שומר על כל ארבעת הפריימים ברצף.",
+    "status": "live",
+    "sort": 5,
+    "price": null,
+    "material": null,
+    "finish": null,
+    "hanging": null,
+    "assets": {
+      "sketch": "/assets/products/lintel-strip-5x15/sketch.png",
+      "model": "/assets/products/lintel-strip-5x15/model.glb",
+      "poster": "/assets/products/lintel-strip-5x15/poster.webp",
+      "renders": [
+        "/assets/products/lintel-strip-5x15/render-front.png",
+        "/assets/products/lintel-strip-5x15/render-back.png"
+      ]
+    }
+  },
+  {
+    "id": "lintel-top-18x13",
+    "slug": "lintel-top-18x13",
+    "name": "Lintel Top 18×13",
+    "sku": "P21-FR-LIN-1813-TP-BR-01",
+    "category": "frames",
+    "series": "Lintel",
+    "layout": "top",
+    "layout_he": "חלון עליון",
+    "panel_mm": [
+      220,
+      280
+    ],
+    "window_mm": [
+      172,
+      122
+    ],
+    "print_cm": "18 × 13",
+    "depth_mm": 15,
+    "desc": "תמונה לרוחב בחלק העליון, ומתחתיה שדה מתכת פנוי. אפשר להשאיר אותו נקי או לחרוט בו שורה.",
+    "status": "live",
+    "sort": 6,
+    "price": null,
+    "material": null,
+    "finish": null,
+    "hanging": null,
+    "assets": {
+      "sketch": "/assets/products/lintel-top-18x13/sketch.png",
+      "model": "/assets/products/lintel-top-18x13/model.glb",
+      "poster": "/assets/products/lintel-top-18x13/poster.webp",
+      "renders": [
+        "/assets/products/lintel-top-18x13/render-front.png",
+        "/assets/products/lintel-top-18x13/render-back.png"
+      ]
+    }
+  },
+  {
+    "id": "lintel-square-10x10",
+    "slug": "lintel-square-10x10",
+    "name": "Lintel Square 10×10",
+    "sku": "P21-FR-LIN-1010-SQ-BR-01",
+    "category": "frames",
+    "series": "Lintel",
+    "layout": "square",
+    "layout_he": "ריבוע",
+    "panel_mm": [
+      240,
+      240
+    ],
+    "window_mm": [
+      92,
+      92
+    ],
+    "print_cm": "10 × 10",
+    "depth_mm": 15,
+    "desc": "פאנל ריבועי וחלון קטן במרכזו. תמונה אחת, הרבה מקום סביבה.",
+    "status": "live",
+    "sort": 7,
+    "price": null,
+    "material": null,
+    "finish": null,
+    "hanging": null,
+    "assets": {
+      "sketch": "/assets/products/lintel-square-10x10/sketch.png",
+      "model": "/assets/products/lintel-square-10x10/model.glb",
+      "poster": "/assets/products/lintel-square-10x10/poster.webp",
+      "renders": [
+        "/assets/products/lintel-square-10x10/render-front.png",
+        "/assets/products/lintel-square-10x10/render-back.png"
+      ]
+    }
+  },
+  {
+    "id": "lintel-corner-10x10",
+    "slug": "lintel-corner-10x10",
+    "name": "Lintel Corner 10×10",
+    "sku": "P21-FR-LIN-1010-CR-BR-01",
+    "category": "frames",
+    "series": "Lintel",
+    "layout": "corner",
+    "layout_he": "פינה",
+    "panel_mm": [
+      240,
+      240
+    ],
+    "window_mm": [
+      92,
+      92
+    ],
+    "print_cm": "10 × 10",
+    "depth_mm": 15,
+    "desc": "חלון ריבועי בפינה. מסובבים את המסגרת על הקיר, והתמונה עוברת לפינה אחרת.",
+    "status": "live",
+    "sort": 8,
+    "price": null,
+    "material": null,
+    "finish": null,
+    "hanging": null,
+    "assets": {
+      "sketch": "/assets/products/lintel-corner-10x10/sketch.png",
+      "model": "/assets/products/lintel-corner-10x10/model.glb",
+      "poster": "/assets/products/lintel-corner-10x10/poster.webp",
+      "renders": [
+        "/assets/products/lintel-corner-10x10/render-front.png",
+        "/assets/products/lintel-corner-10x10/render-back.png"
+      ]
+    }
+  },
+  {
+    "id": "lintel-square-15x15",
+    "slug": "lintel-square-15x15",
+    "name": "Lintel Square 15×15",
+    "sku": "P21-FR-LIN-1515-SQ-BR-01",
+    "category": "frames",
+    "series": "Lintel",
+    "layout": "square",
+    "layout_he": "ריבוע",
+    "panel_mm": [
+      330,
+      330
+    ],
+    "window_mm": [
+      142,
+      142
+    ],
+    "print_cm": "15 × 15",
+    "depth_mm": 15,
+    "desc": "פאנל ריבועי גדול וחלון ממורכז לתמונה של 15 על 15 ס\"מ. שקט, סימטרי, לקיר.",
+    "status": "live",
+    "sort": 9,
+    "price": null,
+    "material": null,
+    "finish": null,
+    "hanging": null,
+    "assets": {
+      "sketch": "/assets/products/lintel-square-15x15/sketch.png",
+      "model": "/assets/products/lintel-square-15x15/model.glb",
+      "poster": "/assets/products/lintel-square-15x15/poster.webp",
+      "renders": [
+        "/assets/products/lintel-square-15x15/render-front.png",
+        "/assets/products/lintel-square-15x15/render-back.png"
+      ]
+    }
+  },
+  {
+    "id": "lintel-corner-15x15",
+    "slug": "lintel-corner-15x15",
+    "name": "Lintel Corner 15×15",
+    "sku": "P21-FR-LIN-1515-CR-BR-01",
+    "category": "frames",
+    "series": "Lintel",
+    "layout": "corner",
+    "layout_he": "פינה",
+    "panel_mm": [
+      330,
+      330
+    ],
+    "window_mm": [
+      142,
+      142
+    ],
+    "print_cm": "15 × 15",
+    "depth_mm": 15,
+    "desc": "חלון של 15 על 15 ס\"מ בפינת פאנל ריבועי גדול. מסובבים, והתמונה עוברת לפינה אחרת.",
+    "status": "live",
+    "sort": 10,
+    "price": null,
+    "material": null,
+    "finish": null,
+    "hanging": null,
+    "assets": {
+      "sketch": "/assets/products/lintel-corner-15x15/sketch.png",
+      "model": "/assets/products/lintel-corner-15x15/model.glb",
+      "poster": "/assets/products/lintel-corner-15x15/poster.webp",
+      "renders": [
+        "/assets/products/lintel-corner-15x15/render-front.png",
+        "/assets/products/lintel-corner-15x15/render-back.png"
+      ]
+    }
+  }
+]
