@@ -116,4 +116,4 @@ block('איך מזמינים', el('p', {
   textContent: `מוסיפים לסל ומשאירים פרטים. נחזור אליך תוך ${config.RESPONSE_DAYS} ימי עסקים עם הצעת מחיר, זמן אספקה ואפשרויות משלוח.`,
 }));
 
-$('#product').hidden = false;
+$('#main').hidden = false;

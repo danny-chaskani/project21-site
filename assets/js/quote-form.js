@@ -35,12 +35,12 @@ function showError(key, message) {
     text.append(...message.split(/(\d{3}-\d{7})/).map((part, i) => (i % 2
       ? Object.assign(document.createElement('span'), { className: 'ltr nowrap', textContent: part })
       : part)));
+    // The error element stays in the DOM (hidden by :empty) so its aria-live
+    // region announces the message when it appears.
     err.replaceChildren(text);
-    err.hidden = false;
     input.setAttribute('aria-invalid', 'true');
   } else {
-    err.textContent = '';
-    err.hidden = true;
+    err.replaceChildren();
     input.removeAttribute('aria-invalid');
   }
 }

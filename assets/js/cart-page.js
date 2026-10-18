@@ -100,7 +100,8 @@ function openQuote() {
   quote.hidden = false;
   request.setAttribute('aria-expanded', 'true');
   window.dispatchEvent(new CustomEvent('p21:quote-open'));
-  quote.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  quote.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
 }
 function closeQuote() {
   quote.hidden = true;

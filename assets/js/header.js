@@ -20,7 +20,7 @@ if (slot) {
     const n = cartCount();
     badge.hidden = n === 0;
     badge.textContent = n ? String(n) : '';
-    a.setAttribute('aria-label', n ? `לסל, ${n} פריטים` : 'לסל');
+    a.setAttribute('aria-label', n === 0 ? 'לסל' : n === 1 ? 'לסל, פריט אחד' : `לסל, ${n} פריטים`);
   };
   render();
   window.addEventListener(CART_EVENT, render);

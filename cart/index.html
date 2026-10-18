@@ -14,6 +14,7 @@
   <script type="module" src="/assets/js/quote-form.js"></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">דילוג לתוכן</a>
   <div class="container">
     <header class="site-header">
       <a class="logo-link" href="/"><img class="logo" src="/assets/p21-horizontal-charcoal.svg" alt="Project21"></a>
@@ -22,7 +23,7 @@
   </div>
   <hr class="rule">
 
-  <main class="container cart-page">
+  <main id="main" tabindex="-1" class="container cart-page">
     <div class="page-head">
       <h1>הסל שלך</h1>
     </div>
@@ -51,19 +52,19 @@
         <div class="field">
           <label for="q-name">שם מלא</label>
           <input class="input" id="q-name" name="name" type="text" autocomplete="name" aria-describedby="q-name-err" required>
-          <p class="error" id="q-name-err" hidden></p>
+          <p class="error" id="q-name-err" aria-live="polite"></p>
         </div>
 
         <div class="field">
           <label for="q-email">מייל</label>
           <input class="input" id="q-email" name="email" type="email" inputmode="email" autocomplete="email" dir="ltr" aria-describedby="q-email-err" required>
-          <p class="error" id="q-email-err" hidden></p>
+          <p class="error" id="q-email-err" aria-live="polite"></p>
         </div>
 
         <div class="field">
           <label for="q-phone">טלפון</label>
           <input class="input" id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" aria-describedby="q-phone-err" required>
-          <p class="error" id="q-phone-err" hidden></p>
+          <p class="error" id="q-phone-err" aria-live="polite"></p>
         </div>
 
         <div class="field">
@@ -82,7 +83,7 @@
             <input type="checkbox" id="q-consent" name="consent" aria-describedby="q-consent-err" required>
             <span>אני מסכים/ה שתיצרו איתי קשר לגבי הבקשה הזו. <a href="/privacy/">מדיניות פרטיות</a></span>
           </label>
-          <p class="error" id="q-consent-err" hidden></p>
+          <p class="error" id="q-consent-err" aria-live="polite"></p>
         </div>
 
         <button class="btn btn-primary" type="submit" id="q-submit">שליחת בקשה</button>
