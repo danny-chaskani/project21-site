@@ -5,12 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>מסגרת מתכת | Project21</title>
   <meta name="description" content="">
+  <meta property="og:type" content="product">
+  <meta property="og:site_name" content="Project21">
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <link rel="icon" type="image/svg+xml" href="/assets/brand/logo/p21-favicon.svg">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/logo/p21-favicon-180.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/assets/brand/p21-tokens.css">
   <link rel="stylesheet" href="/assets/css/p21.css">
+  <link rel="stylesheet" href="/viewer/p21-viewer.css">
+  <!-- 3D: loaded only on product pages, from the site (no CDN). -->
+  <script type="module" src="/vendor/model-viewer.min.js"></script>
+  <script type="module" src="/viewer/p21-viewer.js"></script>
   <script type="module" src="/assets/js/header.js"></script>
+  <script type="module" src="/assets/js/item.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">דילוג לתוכן</a>
@@ -22,38 +34,62 @@
   </div>
   <hr class="rule">
 
-  <main id="main" tabindex="-1" class="container product" hidden>
-    <div class="product-gallery" id="gallery"></div>
-
-    <div class="product-info">
-      <h1 class="product-title product-name" lang="en" dir="ltr" id="name"></h1>
-      <p class="sku" id="sku"></p>
-      <p class="price-line" id="price"></p>
-      <p class="product-desc" id="desc"></p>
-
-      <form id="add-form" novalidate>
-        <div class="field qty-field">
-          <label for="qty">כמות</label>
-          <select class="select" id="qty" name="qty"></select>
+  <main id="main" tabindex="-1" class="container" hidden>
+    <div class="product grid-12">
+      <!-- Media: segmented control, one 4:5 stage, thumbnails -->
+      <section class="product-media" aria-label="תצוגת המוצר">
+        <div class="segmented" role="tablist" aria-label="תצוגה">
+          <button type="button" role="tab" id="mode-3d" data-mode="3d" aria-controls="stage">הדמיה 3D</button>
+          <button type="button" role="tab" id="mode-sketch" data-mode="sketch" aria-controls="stage">שרטוט</button>
+          <button type="button" role="tab" id="mode-side" data-mode="side" aria-controls="stage" hidden>זה לצד זה</button>
         </div>
 
-        <label class="check">
-          <input type="checkbox" id="gift" name="gift" aria-controls="gift-message-field" aria-expanded="false">
-          <span>לארוז כמתנה? נוסיף שרוול, רצועה וכרטיס עם הברכה שלך.</span>
-        </label>
-
-        <div class="field" id="gift-message-field" hidden>
-          <label for="gift-message">ברכה</label>
-          <textarea class="textarea" id="gift-message" name="giftMessage" maxlength="200" aria-describedby="gift-count"></textarea>
-          <p class="small text-secondary" id="gift-count"><span class="ltr" id="gift-count-n">0/200</span></p>
+        <div class="stage" id="stage" role="tabpanel" data-mode="3d">
+          <div class="layer layer-sketch"><img id="sketch" alt=""></div>
+          <div class="layer layer-3d"><div id="viewer"></div></div>
+          <div class="layer layer-render"><img id="render" alt=""></div>
         </div>
 
-        <button class="btn btn-primary add-btn" type="submit">הוספה לסל</button>
-        <p class="added-note" id="added" role="status" aria-live="polite"></p>
-      </form>
+        <div class="thumbs" id="thumbs" role="group" aria-label="תמונות"></div>
+      </section>
 
-      <div class="blocks" id="blocks"></div>
+      <!-- Info -->
+      <div class="product-info">
+        <h1 class="product-title product-name" lang="en" dir="ltr" id="name"></h1>
+        <p class="sku" id="sku"></p>
+        <p class="price-line" id="price"></p>
+        <p class="product-desc" id="desc"></p>
+        <p class="product-tags" id="tags"></p>
+
+        <form id="add-form" novalidate>
+          <div class="field qty-field">
+            <label for="qty">כמות</label>
+            <select class="select" id="qty" name="qty"></select>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" id="gift" name="gift" aria-controls="gift-message-field" aria-expanded="false">
+            <span>לארוז כמתנה? נוסיף שרוול, רצועה וכרטיס עם הברכה שלך.</span>
+          </label>
+
+          <div class="field" id="gift-message-field" hidden>
+            <label for="gift-message">ברכה</label>
+            <textarea class="textarea" id="gift-message" name="giftMessage" maxlength="200" aria-describedby="gift-count"></textarea>
+            <p class="small text-secondary" id="gift-count"><span class="ltr" id="gift-count-n">0/200</span></p>
+          </div>
+
+          <button class="btn btn-primary add-btn" type="submit">הוספה לסל</button>
+          <p class="added-note" id="added" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="accordions" id="accordions"></div>
+      </div>
     </div>
+
+    <section class="more" id="more" aria-labelledby="more-title" hidden>
+      <h2 id="more-title">עוד מהסדרה</h2>
+      <ul class="grid" id="more-grid"></ul>
+    </section>
   </main>
 </body>
 </html>

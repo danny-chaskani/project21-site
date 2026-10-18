@@ -19,7 +19,7 @@ const el = (tag, props = {}, ...children) => {
   return n;
 };
 
-function card(p) {
+export function card(p) {
   const img = cardImage(p);
   const media = el('div', { className: 'card-media' });
   if (img) {
