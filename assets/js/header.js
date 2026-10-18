@@ -1,6 +1,9 @@
 // Site header: cart link with item count, on the left side in RTL.
 // No count is shown while the cart is empty.
-import { cartCount, CART_EVENT } from './cart.js';
+// Also runs the one-time cart move from p21_cart_v1 to p21_cart_v2 and shows
+// its notice once, under the header.
+import { cartCount, CART_EVENT, hasLegacyCart, migrateFromV1, takeCartNotice } from './cart.js';
+import { loadProducts } from './products.js';
 
 const slot = document.querySelector('[data-cart-slot]');
 
@@ -24,4 +27,24 @@ if (slot) {
   };
   render();
   window.addEventListener(CART_EVENT, render);
+}
+
+// Product data is fetched only when there is an old cart to move.
+if (hasLegacyCart()) {
+  try {
+    migrateFromV1(await loadProducts());
+  } catch {
+    // Product data unavailable: try again on the next page load.
+  }
+}
+
+const notice = takeCartNotice();
+if (notice) {
+  const p = Object.assign(document.createElement('p'), { className: 'notice', textContent: notice });
+  p.setAttribute('role', 'status');
+  const wrap = Object.assign(document.createElement('div'), { className: 'container cart-migrated' });
+  wrap.append(p);
+  const rule = document.querySelector('.site-header')?.closest('.container')?.nextElementSibling;
+  if (rule && rule.matches('hr')) rule.after(wrap);
+  else document.querySelector('main')?.prepend(wrap);
 }

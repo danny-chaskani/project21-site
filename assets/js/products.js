@@ -1,16 +1,9 @@
 // Project21 — product data access. Every page, the cart and the quote form
 // read products through this module; no product data lives in HTML.
-//
-// Live site:      /data/products.json only (live products).
-// Local preview:  also /data/products.draft.json, which is git-ignored and
-//                 never published. Decided by host only; there is no URL
-//                 parameter or browser switch that reveals drafts.
+// Only products with status "live" are visible.
 
 const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]']);
 export const isLocalPreview = LOCAL_HOSTS.has(location.hostname);
-
-const LIVE_DRAWINGS = '/assets/products/';
-const DRAFT_DRAWINGS = '/_dev/products/';
 
 async function fetchJson(url) {
   const res = await fetch(url, { cache: 'no-cache' });
@@ -25,21 +18,10 @@ export function loadConfig() {
 }
 
 let productsPromise;
-/** Products visible on this host: live everywhere, plus drafts in local preview. */
+/** Live products only. */
 export function loadProducts() {
   productsPromise ??= (async () => {
-    const live = (await fetchJson('/data/products.json')).filter((p) => p.status === 'live');
-    let drafts = [];
-    if (isLocalPreview) {
-      try {
-        drafts = (await fetchJson('/data/products.draft.json')).filter((p) => p.status === 'draft');
-      } catch {
-        drafts = [];
-      }
-    }
-    const byId = new Map();
-    for (const p of [...live, ...drafts]) if (!byId.has(p.id)) byId.set(p.id, p);
-    const list = [...byId.values()];
+    const list = (await fetchJson('/data/products.json')).filter((p) => p.status === 'live');
     warnOnBadData(list);
     return list;
   })();
@@ -58,14 +40,9 @@ function warnOnBadData(list) {
   }
 }
 
-/** Main image: first photo if there are photos, otherwise the drawing. */
+/** Main image: the front render. (Card-size copies come in stage 2–3.) */
 export function mainImage(p) {
-  if (Array.isArray(p.photos) && p.photos.length) {
-    const ph = p.photos[0];
-    return { src: ph.src, alt: ph.alt || p.name, isDrawing: false };
-  }
-  const base = p.status === 'live' ? LIVE_DRAWINGS : DRAFT_DRAWINGS;
-  return { src: base + p.drawing, alt: `שרטוט של ${p.name}`, isDrawing: true };
+  return { src: p.assets?.renders?.[0] ?? '', alt: `הדמיה של ${p.name}` };
 }
 
 const ils = new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS', maximumFractionDigits: 0 });

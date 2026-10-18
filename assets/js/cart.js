@@ -1,9 +1,11 @@
-// Project21 — cart storage. Client side only, in localStorage under p21_cart_v1.
+// Project21 — cart storage. Client side only, in localStorage under p21_cart_v2.
 // Item shape: {id, sku, qty, gift, giftMessage}. Name, sizes and image are
 // always read from product data by id, never stored here.
 // If storage is unavailable, the cart lives in page memory only.
 
-const KEY = 'p21_cart_v1';
+const KEY = 'p21_cart_v2';
+const LEGACY_KEY = 'p21_cart_v1';
+const NOTICE_KEY = 'p21_cart_notice';
 export const QTY_MIN = 1;
 export const QTY_MAX = 20;
 export const GIFT_MAX = 200;
@@ -98,6 +100,71 @@ export function reconcile(products) {
   const kept = items.filter((i) => ids.has(i.id));
   if (kept.length !== items.length) save(kept);
   return items.length - kept.length;
+}
+
+/** True if an old p21_cart_v1 cart is still in storage. */
+export function hasLegacyCart() {
+  try {
+    return localStorage.getItem(LEGACY_KEY) !== null;
+  } catch {
+    return false;
+  }
+}
+
+/** One-time move from p21_cart_v1: keep lines whose id exists in the current
+    products (SKU refreshed from the data), drop the rest, delete the old key.
+    If anything was dropped, a one-time notice is queued (see takeCartNotice). */
+export function migrateFromV1(products) {
+  let raw;
+  try {
+    raw = localStorage.getItem(LEGACY_KEY);
+  } catch {
+    return;
+  }
+  if (raw === null) return;
+
+  let old = [];
+  let unreadable = false;
+  try {
+    const parsed = JSON.parse(raw);
+    old = Array.isArray(parsed) ? parsed : [];
+    unreadable = !Array.isArray(parsed);
+  } catch {
+    unreadable = true;
+  }
+
+  const byId = new Map(products.map((p) => [p.id, p]));
+  const kept = old
+    .filter((i) => i && byId.has(i.id))
+    .map((i) => clean({ ...i, sku: byId.get(i.id).sku }))
+    .filter(Boolean);
+  const changed = unreadable || kept.length !== old.length || old.some((i) => i && byId.has(i.id) && i.sku !== byId.get(i.id).sku);
+
+  try {
+    // A v2 cart already exists: it wins; v1 lines are merged into it.
+    const current = getCart();
+    for (const k of kept) {
+      const line = current.find((c) => sameLine(c, k));
+      if (line) line.qty = clampQty(line.qty + k.qty);
+      else current.push(k);
+    }
+    save(current);
+    localStorage.removeItem(LEGACY_KEY);
+    if (changed) localStorage.setItem(NOTICE_KEY, '1');
+  } catch {
+    // Storage unavailable: nothing to migrate.
+  }
+}
+
+/** Returns the one-time migration notice text once, then clears it. */
+export function takeCartNotice() {
+  try {
+    if (localStorage.getItem(NOTICE_KEY) !== '1') return '';
+    localStorage.removeItem(NOTICE_KEY);
+    return 'חלק מהפריטים בסל עודכנו או הוסרו.';
+  } catch {
+    return '';
+  }
 }
 
 // Keep tabs in sync.

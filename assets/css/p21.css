@@ -262,6 +262,7 @@ main:focus { outline: none; }
 .cart-page { padding-bottom: 64px; }
 .notice { padding: 12px 16px; margin: 0 0 24px; background: var(--p21-paper); border: 1px solid var(--p21-silver); color: var(--p21-graphite); }
 #empty .btn { margin-top: 8px; }
+.cart-migrated .notice { margin: 16px 0 0; }
 
 .cart-lines { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--p21-silver); }
 .cart-line {
