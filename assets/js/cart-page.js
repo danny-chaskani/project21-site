@@ -1,6 +1,6 @@
 // Cart page: lines, quantities, gift options, summary. The quote request form
 // (stage 6) opens on this same page, under the cart.
-import { loadProducts, mainImage } from './products.js';
+import { loadProducts, cardImage, productUrl } from './products.js';
 import { getCart, updateItem, removeItem, reconcile, CART_EVENT, QTY_MIN, QTY_MAX, GIFT_MAX } from './cart.js';
 
 const $ = (sel) => document.querySelector(sel);
@@ -27,12 +27,12 @@ const ils = new Intl.NumberFormat('he-IL', { style: 'currency', currency: 'ILS',
 
 function lineView(item, index) {
   const p = byId.get(item.id);
-  const img = mainImage(p);
-  const href = `/frames/item/?id=${encodeURIComponent(p.id)}`;
+  const img = cardImage(p);
+  const href = productUrl(p);
   const uid = `l${index}`;
 
   const thumb = el('a', { className: 'line-thumb', href, tabIndex: -1 },
-    el('img', { src: img.src, alt: '', decoding: 'async' }));
+    el('img', { src: img?.src ?? '', width: 800, height: 940, alt: '', decoding: 'async', loading: 'lazy' }));
   thumb.setAttribute('aria-hidden', 'true');
 
   const name = el('a', { className: 'line-name product-name', href, textContent: p.name, lang: 'en', dir: 'ltr' });
